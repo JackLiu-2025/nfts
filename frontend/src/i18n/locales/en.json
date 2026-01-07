@@ -114,7 +114,8 @@
     "burnWarningCollected": "This is a purchased NFT. Burning is irreversible and non-refundable",
     "burnConfirm": "Confirm Burn",
     "updatePrice": "Update Price",
-    "newPrice": "New Price"
+    "newPrice": "New Price",
+    "minPrice": "Minimum Price: 0.1 MATIC"
   },
   "toast": {
     "success": "Success",

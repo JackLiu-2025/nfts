@@ -114,7 +114,8 @@
     "burnWarningCollected": "これは購入したNFTです。バーンは取り消せず、返金もできません",
     "burnConfirm": "バーンを確認",
     "updatePrice": "価格を更新",
-    "newPrice": "新しい価格"
+    "newPrice": "新しい価格",
+    "minPrice": "最低価格: 0.1 MATIC"
   },
   "toast": {
     "success": "成功",
