@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "home": "首页",
+    "marketplace": "市场",
+    "mint": "铸造",
+    "profile": "个人中心"
+  },
+  "wallet": {
+    "connect": "连接钱包",
+    "disconnect": "断开连接",
+    "connecting": "连接中...",
+    "selectWallet": "选择钱包",
+    "metamask": "MetaMask",
+    "walletConnect": "WalletConnect"
+  },
+  "home": {
+    "hero": {
+      "title": "探索、收藏、交易",
+      "subtitle": "非凡的数字艺术",
+      "description": "在Polygon区块链上发现独特的NFT作品",
+      "explore": "探索市场",
+      "create": "创作NFT"
+    },
+    "recentActivity": "最近交易",
+    "featuredNFTs": "精选NFT",
+    "categories": "分类"
+  },
+  "marketplace": {
+    "title": "NFT市场",
+    "search": "搜索NFT...",
+    "filters": "筛选",
+    "category": "分类",
+    "priceRange": "价格范围",
+    "allCategories": "全部分类",
+    "art": "艺术",
+    "collectible": "收藏品",
+    "gaming": "游戏",
+    "music": "音乐",
+    "minPrice": "最低价格",
+    "maxPrice": "最高价格",
+    "apply": "应用",
+    "reset": "重置",
+    "noResults": "未找到NFT",
+    "loading": "加载中..."
+  },
+  "nft": {
+    "details": "NFT详情",
+    "owner": "所有者",
+    "creator": "创作者",
+    "royalty": "版税",
+    "price": "价格",
+    "buy": "购买",
+    "list": "挂单出售",
+    "unlist": "取消挂单",
+    "burn": "销毁",
+    "transfer": "转赠",
+    "history": "交易历史",
+    "noHistory": "暂无交易历史",
+    "properties": "属性",
+    "description": "描述"
+  },
+  "mint": {
+    "title": "铸造NFT",
+    "uploadImage": "上传图片",
+    "dragDrop": "拖拽文件到此处或点击上传",
+    "supportedFormats": "支持 JPG, PNG, GIF, WEBP (最大10MB)",
+    "name": "NFT名称",
+    "namePlaceholder": "输入NFT名称",
+    "description": "描述",
+    "descriptionPlaceholder": "描述你的NFT...",
+    "category": "分类",
+    "selectCategory": "选择分类",
+    "royalty": "版税 (%)",
+    "royaltyHint": "0-10%",
+    "preview": "预览",
+    "mint": "铸造",
+    "minting": "铸造中...",
+    "success": "铸造成功！",
+    "failed": "铸造失败",
+    "error": "铸造失败",
+    "uploadingToIPFS": "上传到IPFS..."
+  },
+  "profile": {
+    "title": "个人中心",
+    "created": "我创作的",
+    "collected": "我收藏的",
+    "listed": "出售中",
+    "stats": {
+      "created": "创作",
+      "collected": "收藏",
+      "sold": "已售"
+    },
+    "noNFTs": "暂无NFT",
+    "soldOut": "已售出"
+  },
+  "transaction": {
+    "bought": "购买了",
+    "minted": "铸造了",
+    "listed": "挂单了",
+    "burned": "销毁了",
+    "transferred": "转赠了"
+  },
+  "modal": {
+    "confirm": "确认",
+    "cancel": "取消",
+    "close": "关闭",
+    "buyNFT": "购买NFT",
+    "buyConfirm": "确认购买此NFT？",
+    "listNFT": "挂单出售",
+    "listPrice": "出售价格",
+    "listConfirm": "确认挂单",
+    "minPrice": "最低价格",
+    "burnNFT": "销毁NFT",
+    "burnWarningCreated": "销毁后无法恢复",
+    "burnWarningCollected": "这是你购买的NFT，销毁后无法恢复且无法退款",
+    "burnConfirm": "确认销毁",
+    "updatePrice": "修改价格",
+    "newPrice": "新价格"
+  },
+  "toast": {
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "info": "提示",
+    "walletConnected": "钱包已连接",
+    "walletDisconnected": "钱包已断开",
+    "copied": "已复制到剪贴板",
+    "copyFailed": "复制失败",
+    "invalidFile": "文件类型或大小不符合要求",
+    "invalidPrice": "价格必须在 0.001 - 1,000,000 MATIC 之间",
+    "transactionPending": "交易处理中...",
+    "transactionSuccess": "交易成功！",
+    "transactionFailed": "交易失败"
+  },
+  "common": {
+    "loading": "加载中...",
+    "loadMore": "加载更多",
+    "noData": "暂无数据",
+    "error": "出错了",
+    "retry": "重试",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "view": "查看",
+    "copy": "复制"
+  }
+}

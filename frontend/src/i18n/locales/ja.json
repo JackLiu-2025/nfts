@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "marketplace": "マーケット",
+    "mint": "ミント",
+    "profile": "プロフィール"
+  },
+  "wallet": {
+    "connect": "ウォレット接続",
+    "disconnect": "切断",
+    "connecting": "接続中...",
+    "selectWallet": "ウォレットを選択",
+    "metamask": "MetaMask",
+    "walletConnect": "WalletConnect"
+  },
+  "home": {
+    "hero": {
+      "title": "発見、収集、取引",
+      "subtitle": "特別なデジタルアート",
+      "description": "Polygonブロックチェーン上のユニークなNFTアートを発見",
+      "explore": "マーケットを探索",
+      "create": "NFTを作成"
+    },
+    "recentActivity": "最近のアクティビティ",
+    "featuredNFTs": "注目のNFT",
+    "categories": "カテゴリー"
+  },
+  "marketplace": {
+    "title": "NFTマーケット",
+    "search": "NFTを検索...",
+    "filters": "フィルター",
+    "category": "カテゴリー",
+    "priceRange": "価格範囲",
+    "allCategories": "すべてのカテゴリー",
+    "art": "アート",
+    "collectible": "コレクティブル",
+    "gaming": "ゲーミング",
+    "music": "音楽",
+    "minPrice": "最低価格",
+    "maxPrice": "最高価格",
+    "apply": "適用",
+    "reset": "リセット",
+    "noResults": "NFTが見つかりません",
+    "loading": "読み込み中..."
+  },
+  "nft": {
+    "details": "NFT詳細",
+    "owner": "所有者",
+    "creator": "作成者",
+    "royalty": "ロイヤリティ",
+    "price": "価格",
+    "buy": "今すぐ購入",
+    "list": "販売リスト",
+    "unlist": "リストをキャンセル",
+    "burn": "バーン",
+    "transfer": "転送",
+    "history": "取引履歴",
+    "noHistory": "取引履歴なし",
+    "properties": "プロパティ",
+    "description": "説明"
+  },
+  "mint": {
+    "title": "NFTをミント",
+    "uploadImage": "画像をアップロード",
+    "dragDrop": "ファイルをドラッグ＆ドロップまたはクリックしてアップロード",
+    "supportedFormats": "JPG、PNG、GIF、WEBP対応（最大10MB）",
+    "name": "NFT名",
+    "namePlaceholder": "NFT名を入力",
+    "description": "説明",
+    "descriptionPlaceholder": "NFTを説明...",
+    "category": "カテゴリー",
+    "selectCategory": "カテゴリーを選択",
+    "royalty": "ロイヤリティ (%)",
+    "royaltyHint": "0-10%",
+    "preview": "プレビュー",
+    "mint": "ミント",
+    "minting": "ミント中...",
+    "success": "ミント成功！",
+    "failed": "ミント失敗",
+    "error": "ミント失敗",
+    "uploadingToIPFS": "IPFSにアップロード中..."
+  },
+  "profile": {
+    "title": "マイプロフィール",
+    "created": "作成済み",
+    "collected": "収集済み",
+    "listed": "販売中",
+    "stats": {
+      "created": "作成",
+      "collected": "収集",
+      "sold": "販売済み"
+    },
+    "noNFTs": "NFTがありません",
+    "soldOut": "売り切れ"
+  },
+  "transaction": {
+    "bought": "購入しました",
+    "minted": "ミントしました",
+    "listed": "リストしました",
+    "burned": "バーンしました",
+    "transferred": "転送しました"
+  },
+  "modal": {
+    "confirm": "確認",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "buyNFT": "NFTを購入",
+    "buyConfirm": "このNFTの購入を確認しますか？",
+    "listNFT": "販売リスト",
+    "listPrice": "販売価格",
+    "listConfirm": "リストを確認",
+    "burnNFT": "NFTをバーン",
+    "burnWarningCreated": "この操作は元に戻せません",
+    "burnWarningCollected": "これは購入したNFTです。バーンは取り消せず、返金もできません",
+    "burnConfirm": "バーンを確認",
+    "updatePrice": "価格を更新",
+    "newPrice": "新しい価格"
+  },
+  "toast": {
+    "success": "成功",
+    "error": "エラー",
+    "warning": "警告",
+    "info": "情報",
+    "walletConnected": "ウォレット接続済み",
+    "walletDisconnected": "ウォレット切断済み",
+    "copied": "クリップボードにコピーしました",
+    "copyFailed": "コピー失敗",
+    "invalidFile": "無効なファイルタイプまたはサイズ",
+    "invalidPrice": "価格は0.001〜1,000,000 MATICの間である必要があります",
+    "transactionPending": "トランザクション処理中...",
+    "transactionSuccess": "トランザクション成功！",
+    "transactionFailed": "トランザクション失敗"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "loadMore": "もっと読み込む",
+    "noData": "データなし",
+    "error": "問題が発生しました",
+    "retry": "再試行",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ",
+    "save": "保存",
+    "edit": "編集",
+    "delete": "削除",
+    "view": "表示",
+    "copy": "コピー"
+  }
+}

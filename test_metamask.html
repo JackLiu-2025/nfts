@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask Network Test</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        .card {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 1px solid #3a3a3a;
+        }
+        h1 {
+            color: #8b5cf6;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #a78bfa;
+            font-size: 18px;
+            margin-top: 0;
+        }
+        button {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background: #7c3aed;
+        }
+        button:disabled {
+            background: #4a4a4a;
+            cursor: not-allowed;
+        }
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .success {
+            background: #065f46;
+            border: 1px solid #10b981;
+        }
+        .error {
+            background: #7f1d1d;
+            border: 1px solid #ef4444;
+        }
+        .warning {
+            background: #78350f;
+            border: 1px solid #f59e0b;
+        }
+        .info {
+            background: #1e3a8a;
+            border: 1px solid #3b82f6;
+        }
+        pre {
+            background: #1a1a1a;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .check {
+            margin: 8px 0;
+            padding: 8px;
+            background: #1a1a1a;
+            border-radius: 6px;
+        }
+        .check-pass { color: #10b981; }
+        .check-fail { color: #ef4444; }
+    </style>
+</head>
+<body>
+    <h1>🔍 MetaMask Network Diagnostic Tool</h1>
+    <p>This tool helps diagnose MetaMask connection issues for Polygon Amoy Testnet</p>
+
+    <div class="card">
+        <h2>Step 1: Connect Wallet</h2>
+        <button id="connectBtn" onclick="connectWallet()">Connect MetaMask</button>
+        <div id="walletStatus"></div>
+    </div>
+
+    <div class="card">
+        <h2>Step 2: Check Network</h2>
+        <button id="checkNetworkBtn" onclick="checkNetwork()" disabled>Check Network</button>
+        <button id="switchNetworkBtn" onclick="switchNetwork()" disabled>Switch to Amoy</button>
+        <div id="networkStatus"></div>
+    </div>
+
+    <div class="card">
+        <h2>Step 3: Verify Contract</h2>
+        <button id="checkContractBtn" onclick="checkContract()" disabled>Check Contract</button>
+        <div id="contractStatus"></div>
+    </div>
+
+    <div class="card">
+        <h2>Step 4: Test Minting</h2>
+        <button id="testMintBtn" onclick="testMint()" disabled>Test Mint (Estimate Gas)</button>
+        <div id="mintStatus"></div>
+    </div>
+
+    <script src="https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js"></script>
+    <script>
+        const EXPECTED_CHAIN_ID = '0x13882'; // 80002 in hex
+        const CONTRACT_ADDRESS = '0xB70b8bd1Fe19464b440C352a89A664314b8Fe4B5';
+        const AMOY_RPC = 'https://rpc-amoy.polygon.technology/';
+        
+        const CONTRACT_ABI = [
+            "function mintNFT(string uri, uint256 royaltyPercent, string category) returns (uint256)",
+            "function name() view returns (string)",
+            "function symbol() view returns (string)",
+            "function getTotalMinted() view returns (uint256)"
+        ];
+
+        let provider, signer, contract;
+
+        async function connectWallet() {
+            const statusDiv = document.getElementById('walletStatus');
+            
+            try {
+                if (!window.ethereum) {
+                    statusDiv.innerHTML = '<div class="status error">❌ MetaMask not installed!</div>';
+                    return;
+                }
+
+                statusDiv.innerHTML = '<div class="status info">🔄 Connecting...</div>';
+                
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                
+                const address = await signer.getAddress();
+                const balance = await provider.getBalance(address);
+                const balanceInMatic = ethers.utils.formatEther(balance);
+                
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Connected!<br>
+                        <strong>Address:</strong> ${address}<br>
+                        <strong>Balance:</strong> ${balanceInMatic} MATIC
+                    </div>
+                `;
+                
+                document.getElementById('checkNetworkBtn').disabled = false;
+                document.getElementById('switchNetworkBtn').disabled = false;
+                
+                // Auto-check network
+                await checkNetwork();
+                
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function checkNetwork() {
+            const statusDiv = document.getElementById('networkStatus');
+            
+            try {
+                const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+                const network = await provider.getNetwork();
+                
+                const isCorrectNetwork = chainId === EXPECTED_CHAIN_ID;
+                
+                statusDiv.innerHTML = `
+                    <div class="status ${isCorrectNetwork ? 'success' : 'error'}">
+                        <div class="check">
+                            <strong>Current Network:</strong><br>
+                            Chain ID: ${chainId} (${parseInt(chainId, 16)})<br>
+                            Name: ${network.name}
+                        </div>
+                        <div class="check">
+                            <strong>Expected Network:</strong><br>
+                            Chain ID: ${EXPECTED_CHAIN_ID} (80002)<br>
+                            Name: Polygon Amoy Testnet
+                        </div>
+                        <div class="check ${isCorrectNetwork ? 'check-pass' : 'check-fail'}">
+                            ${isCorrectNetwork ? '✅ Network is correct!' : '❌ Wrong network! Please switch to Polygon Amoy'}
+                        </div>
+                    </div>
+                `;
+                
+                if (isCorrectNetwork) {
+                    document.getElementById('checkContractBtn').disabled = false;
+                    await checkContract();
+                }
+                
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function switchNetwork() {
+            const statusDiv = document.getElementById('networkStatus');
+            
+            try {
+                statusDiv.innerHTML = '<div class="status info">🔄 Switching network...</div>';
+                
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: EXPECTED_CHAIN_ID }],
+                    });
+                } catch (switchError) {
+                    // Network not added, try adding it
+                    if (switchError.code === 4902) {
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: EXPECTED_CHAIN_ID,
+                                chainName: 'Polygon Amoy Testnet',
+                                rpcUrls: [AMOY_RPC],
+                                nativeCurrency: {
+                                    name: 'MATIC',
+                                    symbol: 'MATIC',
+                                    decimals: 18
+                                },
+                                blockExplorerUrls: ['https://amoy.polygonscan.com/']
+                            }]
+                        });
+                    } else {
+                        throw switchError;
+                    }
+                }
+                
+                // Refresh provider after network switch
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                
+                await checkNetwork();
+                
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function checkContract() {
+            const statusDiv = document.getElementById('contractStatus');
+            
+            try {
+                statusDiv.innerHTML = '<div class="status info">🔄 Checking contract...</div>';
+                
+                contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+                
+                const name = await contract.name();
+                const symbol = await contract.symbol();
+                const totalMinted = await contract.getTotalMinted();
+                
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Contract found and working!<br>
+                        <strong>Address:</strong> ${CONTRACT_ADDRESS}<br>
+                        <strong>Name:</strong> ${name}<br>
+                        <strong>Symbol:</strong> ${symbol}<br>
+                        <strong>Total Minted:</strong> ${totalMinted.toString()}<br>
+                        <a href="https://amoy.polygonscan.com/address/${CONTRACT_ADDRESS}" target="_blank" style="color: #8b5cf6;">View on Explorer →</a>
+                    </div>
+                `;
+                
+                document.getElementById('testMintBtn').disabled = false;
+                
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ Contract check failed!<br>
+                        <strong>Error:</strong> ${error.message}<br>
+                        <pre>${JSON.stringify(error, null, 2)}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        async function testMint() {
+            const statusDiv = document.getElementById('mintStatus');
+            
+            try {
+                statusDiv.innerHTML = '<div class="status info">🔄 Testing mint (estimating gas)...</div>';
+                
+                const testURI = 'ipfs://QmaHoDSB1EYvsDQjE9rt2dYhucqWAKdiAZcViK7jTT7qDn';
+                const royaltyPercent = 500; // 5%
+                const category = 'test';
+                
+                console.log('Estimating gas for mint with params:', {
+                    uri: testURI,
+                    royaltyPercent,
+                    category
+                });
+                
+                const gasEstimate = await contract.estimateGas.mintNFT(testURI, royaltyPercent, category);
+                const feeData = await provider.getFeeData();
+                const estimatedCost = gasEstimate.mul(feeData.gasPrice);
+                
+                statusDiv.innerHTML = `
+                    <div class="status success">
+                        ✅ Gas estimation successful!<br>
+                        <strong>Gas Limit:</strong> ${gasEstimate.toString()}<br>
+                        <strong>Gas Price:</strong> ${ethers.utils.formatUnits(feeData.gasPrice, 'gwei')} gwei<br>
+                        <strong>Estimated Cost:</strong> ${ethers.utils.formatEther(estimatedCost)} MATIC<br>
+                        <br>
+                        <div class="check check-pass">
+                            ✅ Minting should work! The contract is accessible and gas estimation succeeded.
+                        </div>
+                        <div class="check" style="color: #f59e0b;">
+                            ⚠️ If minting still fails in your app, check:<br>
+                            1. Make sure you're on the same network in your app<br>
+                            2. Clear MetaMask cache (Settings → Advanced → Reset Account)<br>
+                            3. Try refreshing your app page<br>
+                            4. Check browser console for detailed errors
+                        </div>
+                    </div>
+                `;
+                
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="status error">
+                        ❌ Gas estimation failed!<br>
+                        <strong>Error:</strong> ${error.message}<br>
+                        <strong>Code:</strong> ${error.code}<br>
+                        <pre>${JSON.stringify(error, null, 2)}</pre>
+                        <br>
+                        <div class="check check-fail">
+                            This is the same error you're seeing in your app. Possible causes:<br>
+                            1. Wrong network selected in MetaMask<br>
+                            2. RPC endpoint issues<br>
+                            3. Insufficient gas/MATIC<br>
+                            4. Contract state issue
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Listen for network changes
+        if (window.ethereum) {
+            window.ethereum.on('chainChanged', () => {
+                window.location.reload();
+            });
+            
+            window.ethereum.on('accountsChanged', () => {
+                window.location.reload();
+            });
+        }
+    </script>
+</body>
+</html>

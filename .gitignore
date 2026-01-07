@@ -1,0 +1,278 @@
+# ============================================
+# NFT Marketplace Project - Complete .gitignore
+# ============================================
+
+# ============================================
+# 操作系统文件
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# IDE 和编辑器
+# ============================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains IDEs (WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================
+# 前端 (React + Vite + TypeScript)
+# ============================================
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+
+# 前端环境变量（包含敏感信息）
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# 前端日志
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# 前端测试覆盖率
+frontend/coverage/
+frontend/.nyc_output/
+
+# ============================================
+# 后端 (Python + FastAPI)
+# ============================================
+# Python 字节码
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/**/*.py[cod]
+backend/**/*$py.class
+
+# Python 虚拟环境
+backend/venv/
+backend/env/
+backend/ENV/
+backend/.venv/
+
+# Python 分发/打包
+backend/*.egg
+backend/*.egg-info/
+backend/dist/
+backend/build/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/pip-wheel-metadata/
+backend/share/python-wheels/
+
+# 后端环境变量（包含敏感信息）
+backend/.env
+backend/.env.local
+backend/.env.development.local
+backend/.env.test.local
+backend/.env.production.local
+
+# 后端日志
+backend/*.log
+backend/logs/
+
+# 数据库文件
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+# Alembic（如果使用）
+backend/alembic/versions/*.pyc
+
+# pytest
+backend/.pytest_cache/
+backend/.tox/
+backend/.coverage
+backend/htmlcov/
+backend/.hypothesis/
+
+# mypy
+backend/.mypy_cache/
+backend/.dmypy.json
+backend/dmypy.json
+
+# Celery
+backend/celerybeat-schedule
+backend/celerybeat.pid
+
+# ============================================
+# 智能合约 (Hardhat)
+# ============================================
+contracts/node_modules/
+contracts/cache/
+contracts/artifacts/
+contracts/typechain/
+contracts/typechain-types/
+
+# Hardhat 环境变量（包含私钥等敏感信息）
+contracts/.env
+contracts/.env.local
+contracts/.env.development.local
+contracts/.env.test.local
+contracts/.env.production.local
+
+# Hardhat 覆盖率
+contracts/coverage/
+contracts/coverage.json
+
+# Hardhat 日志
+contracts/npm-debug.log*
+contracts/yarn-debug.log*
+contracts/yarn-error.log*
+
+# Hardhat Ignition 默认文件夹
+contracts/ignition/deployments/chain-*/
+
+# ============================================
+# 依赖管理
+# ============================================
+# Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Python
+*.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ============================================
+# 日志文件
+# ============================================
+*.log
+logs/
+backend.log
+frontend.log
+
+# ============================================
+# 临时文件
+# ============================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ============================================
+# 构建输出
+# ============================================
+dist/
+build/
+out/
+
+# ============================================
+# 测试和覆盖率
+# ============================================
+coverage/
+.nyc_output/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# ============================================
+# 文档生成
+# ============================================
+docs/_build/
+site/
+
+# ============================================
+# 部署相关（可选）
+# ============================================
+# Docker
+# docker-compose.override.yml
+
+# Kubernetes
+# *.kubeconfig
+
+# Terraform
+# *.tfstate
+# *.tfstate.*
+# .terraform/
+
+# ============================================
+# 项目特定文件
+# ============================================
+# 部署信息（可能包含敏感信息）
+contracts/deployment-*.json
+
+# 本地测试脚本
+test-local.sh
+test-*.js
+test-*.py
+
+# 临时笔记和文档
+TODO.md
+NOTES.md
+scratch/
+
+# 备份文件
+*.backup
+backup/
+
+# ============================================
+# 保留的重要文件（不忽略）
+# ============================================
+# 确保这些文件被提交
+!.gitignore
+!.gitattributes
+!README.md
+!LICENSE
+
+# 环境变量示例文件（不包含敏感信息）
+!.env.example
+!frontend/.env.example
+!backend/.env.example
+!contracts/.env.example
+
+# 配置文件模板
+!**/config.example.*
+!**/settings.example.*

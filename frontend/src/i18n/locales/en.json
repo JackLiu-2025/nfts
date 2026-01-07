@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "home": "Home",
+    "marketplace": "Marketplace",
+    "mint": "Mint",
+    "profile": "Profile"
+  },
+  "wallet": {
+    "connect": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "connecting": "Connecting...",
+    "selectWallet": "Select Wallet",
+    "metamask": "MetaMask",
+    "walletConnect": "WalletConnect"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover, Collect, Trade",
+      "subtitle": "Extraordinary Digital Art",
+      "description": "Discover unique NFT artworks on Polygon blockchain",
+      "explore": "Explore Market",
+      "create": "Create NFT"
+    },
+    "recentActivity": "Recent Activity",
+    "featuredNFTs": "Featured NFTs",
+    "categories": "Categories"
+  },
+  "marketplace": {
+    "title": "NFT Marketplace",
+    "search": "Search NFTs...",
+    "filters": "Filters",
+    "category": "Category",
+    "priceRange": "Price Range",
+    "allCategories": "All Categories",
+    "art": "Art",
+    "collectible": "Collectible",
+    "gaming": "Gaming",
+    "music": "Music",
+    "minPrice": "Min Price",
+    "maxPrice": "Max Price",
+    "apply": "Apply",
+    "reset": "Reset",
+    "noResults": "No NFTs found",
+    "loading": "Loading..."
+  },
+  "nft": {
+    "details": "NFT Details",
+    "owner": "Owner",
+    "creator": "Creator",
+    "royalty": "Royalty",
+    "price": "Price",
+    "buy": "Buy Now",
+    "list": "List for Sale",
+    "unlist": "Cancel Listing",
+    "burn": "Burn",
+    "transfer": "Transfer",
+    "history": "Transaction History",
+    "noHistory": "No transaction history",
+    "properties": "Properties",
+    "description": "Description"
+  },
+  "mint": {
+    "title": "Mint NFT",
+    "uploadImage": "Upload Image",
+    "dragDrop": "Drag & drop file here or click to upload",
+    "supportedFormats": "Supports JPG, PNG, GIF, WEBP (Max 10MB)",
+    "name": "NFT Name",
+    "namePlaceholder": "Enter NFT name",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe your NFT...",
+    "category": "Category",
+    "selectCategory": "Select category",
+    "royalty": "Royalty (%)",
+    "royaltyHint": "0-10%",
+    "preview": "Preview",
+    "mint": "Mint NFT",
+    "minting": "Minting...",
+    "success": "Minted successfully!",
+    "failed": "Minting failed",
+    "error": "Minting failed",
+    "uploadingToIPFS": "Uploading to IPFS..."
+  },
+  "profile": {
+    "title": "My Profile",
+    "created": "Created",
+    "collected": "Collected",
+    "listed": "On Sale",
+    "stats": {
+      "created": "Created",
+      "collected": "Collected",
+      "sold": "Sold"
+    },
+    "noNFTs": "No NFTs yet",
+    "soldOut": "Sold Out"
+  },
+  "transaction": {
+    "bought": "bought",
+    "minted": "minted",
+    "listed": "listed",
+    "burned": "burned",
+    "transferred": "transferred"
+  },
+  "modal": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "buyNFT": "Buy NFT",
+    "buyConfirm": "Confirm purchase of this NFT?",
+    "listNFT": "List for Sale",
+    "listPrice": "Sale Price",
+    "listConfirm": "Confirm Listing",
+    "burnNFT": "Burn NFT",
+    "burnWarningCreated": "This action cannot be undone",
+    "burnWarningCollected": "This is a purchased NFT. Burning is irreversible and non-refundable",
+    "burnConfirm": "Confirm Burn",
+    "updatePrice": "Update Price",
+    "newPrice": "New Price"
+  },
+  "toast": {
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info",
+    "walletConnected": "Wallet connected",
+    "walletDisconnected": "Wallet disconnected",
+    "copied": "Copied to clipboard",
+    "copyFailed": "Copy failed",
+    "invalidFile": "Invalid file type or size",
+    "invalidPrice": "Price must be between 0.001 - 1,000,000 MATIC",
+    "transactionPending": "Transaction pending...",
+    "transactionSuccess": "Transaction successful!",
+    "transactionFailed": "Transaction failed"
+  },
+  "common": {
+    "loading": "Loading...",
+    "loadMore": "Load More",
+    "noData": "No data",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "copy": "Copy"
+  }
+}
