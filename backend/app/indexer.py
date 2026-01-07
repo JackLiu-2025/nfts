@@ -13,7 +13,9 @@ import httpx
 
 
 # 加载合约ABI（现在是纯数组格式）
-with open("../frontend/src/contracts/NFTMarketplace.json", "r") as f:
+import os
+abi_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "contracts", "NFTMarketplace.json")
+with open(abi_path, "r") as f:
     CONTRACT_ABI = json.load(f)
 
 
